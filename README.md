@@ -120,7 +120,7 @@ service: esphome.ulanzi_rainbow_bitmap_small
 data:
   default_font: true
   lifetime: >-
-    {{ (state_attr('media_player.era300', 'media_duration') | float(default=0) / 60) | int(default=1) if state_attr('media_player.era300', 'media_duration') is not none else 4/60 }}
+    {{ (state_attr('media_player.era300', 'media_duration') | float(default=0) / 60) | int(default=1) if state_attr('media_player.era300', 'media_duration') is not none else 4 }}
   screen_time: 40
   text: >-
     {{ state_attr('media_player.era300', 'media_artist') }} - {{
