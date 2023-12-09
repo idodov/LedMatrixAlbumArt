@@ -123,7 +123,6 @@ data:
     {{ state_attr('media_player.era300', 'media_artist') }} - {{
     state_attr('media_player.era300', 'media_title') }}
   icon: "{{ state_attr('sensor.8x8_pic', 'album_art') }}"
-enabled: true
 ```
 Exmaple Result type: string (This template listens for the following state changed events: Entity: `media_player.era300` and Entity: `sensor.8x8_pic`)
 ```log
@@ -136,5 +135,4 @@ data:
   text: >-
     Pink Floyd - Brain Damage
   icon: "[22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 18785, 20801, 22849, 22881, 22849, 26977, 7556, 28005, 60130, 39297, 18753, 39618, 39618, 47842, 7620, 28133, 15974, 54982, 63431, 27105, 22849, 31201, 39618, 35490, 22977, 18785, 43746, 22849, 22849, 22849, 22881, 22881, 22849, 22849, 22881, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849, 22849]"
-enabled: true
 ```
