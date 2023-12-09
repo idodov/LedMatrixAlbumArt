@@ -55,11 +55,10 @@ import appdaemon.plugins.hass.hassapi as hass
 
 class ImageProcessor(hass.Hass):
 
- def initialize(self):
+    def initialize(self):
         # Define the entity and attribute names
-        self.entity_name = "media_player.era300" #CHANGE THE VALUE TO YOUR ENTITY NAME!
+        self.entity_name = "media_player.era300"
         self.attribute_name = "entity_picture"
-        self.ha_url = "http://homeassistant.local:8123"
 
         # Listen to the attribute of the entity
         self.listen_state(self.process_image, self.entity_name, attribute=self.attribute_name)
@@ -68,7 +67,7 @@ class ImageProcessor(hass.Hass):
         if new is not None:
             try:
                 # Get the image from the URL
-                response = requests.get(f"{self.ha_url}{new}")
+                response = requests.get(f"http://homeassistant.local:8123{new}")
                 img = Image.open(BytesIO(response.content))
 
                 # Convert the image to RGB and resize it
@@ -96,10 +95,8 @@ class ImageProcessor(hass.Hass):
                 new_attributes = {
                     "album_art": led_matrix,
                 }
-                # Create sensor.8x8_pic in HA to store the data. 
-                # Use: {{ strate_attr('sensor.8x8_pic', 'album_art') }} 
-                self.set_state("sensor.8x8_pic", state="on", attributes=new_attributes)
                 self.log(f"Album Art: {led_matrix}")
+                self.set_state("sensor.8x8_pic", state="on", attributes=new_attributes)
 
             except Exception as e:
                 self.log(f"Error processing image: {e}")
