@@ -5,8 +5,6 @@ EspHoMaTriXv2 with AppDaemon
 
 This script takes the album art of the currently playing song and transforms it into a vibrant 8x8 pixel art display on your LED matrix screen. It's a fun and unique way to visualize your music and add a touch of color to your listening experience.
 
-Please confirm that you can access `http://homeassistant.local:8123`. If you're unable to do so, you'll need to replace it with your local IP address in the script. 
-
 ## Functionality
 
 **Based on AppDaemon (add-on)** the script listens to the `entity_picture` attribute of a specified media player entity in Home Assistant. When the attribute changes (indicating a new song is playing), the script fetches the new album art image from the provided URL.
@@ -45,6 +43,7 @@ Please ensure that this configuration is correctly set in your AppDaemon configu
 In the AppDaemon apps directory, **create a new file named** `imageprocessor.py` and paste the script into it.
 
 **Modify the script to match the name of your media player entity.** In my case, the name is `media_player.era300`.
+Please confirm that you can access `http://homeassistant.local:8123`. If you're unable to do so, you'll need to replace it with your local IP address in the script. 
 
 Once you've made the necessary changes, save the script.
 ```yaml
@@ -60,6 +59,7 @@ class ImageProcessor(hass.Hass):
         # Define the entity and attribute names
         self.entity_name = "media_player.era300" #CHANGE THE VALUE TO YOUR ENTITY NAME!
         self.attribute_name = "entity_picture"
+        self.ha_url = "http://homeassistant.local:8123"
 
         # Listen to the attribute of the entity
         self.listen_state(self.process_image, self.entity_name, attribute=self.attribute_name)
@@ -68,7 +68,7 @@ class ImageProcessor(hass.Hass):
         if new is not None:
             try:
                 # Get the image from the URL
-                response = requests.get(f"http://homeassistant.local:8123{new}")
+                response = requests.get(f"{self.ha_url}{new}")
                 img = Image.open(BytesIO(response.content))
 
                 # Convert the image to RGB and resize it
