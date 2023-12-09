@@ -42,9 +42,9 @@ Please ensure that this configuration is correctly set in your AppDaemon configu
 
 In the AppDaemon apps directory, **create a new file named** `imageprocessor.py` and paste the script into it.
 
-**Modify the script to match the name of your media player entity.** In my case, the name is `media_player.era300`.
-Please confirm that you can access `http://homeassistant.local:8123`. If you're unable to do so, you'll need to replace it with your local IP address in the script. 
-
+### Modify the script
+- **Match the name of your media player entity.** In my case, the name is `media_player.era300`.
+- Confirm that you can access `http://homeassistant.local:8123`. If you're unable to do so, you'll need to replace it with your local IP address in the script. 
 Once you've made the necessary changes, save the script.
 ```yaml
 import numpy as np
@@ -55,7 +55,7 @@ import appdaemon.plugins.hass.hassapi as hass
 
 class ImageProcessor(hass.Hass):
 
-    def initialize(self):
+ def initialize(self):
         # Define the entity and attribute names
         self.entity_name = "media_player.era300" #CHANGE THE VALUE TO YOUR ENTITY NAME!
         self.attribute_name = "entity_picture"
