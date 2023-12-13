@@ -1,6 +1,6 @@
 # LED Matrix Album Art Display 
 EspHoMaTriXv2 with AppDaemon
-
+& Home Assistant 
 ## Introduction
 
 This script takes the album art of the currently playing song and transforms it into a vibrant 8x8 pixel art display on your LED matrix screen. It's a fun and unique way to visualize your music and add a touch of color to your listening experience.
@@ -130,7 +130,7 @@ data:
     state_attr('media_player.era300', 'media_title') }}
   icon: "{{ state_attr('sensor.8x8_pic', 'album_art') }}"
 ```
-Exmaple Result type: string (This template listens for the following state changed events: Entity: `media_player.era300` and Entity: `sensor.8x8_pic`)
+Exmaple Result
 ```log
 service: esphome.ulanzi_rainbow_bitmap_small
 data:
