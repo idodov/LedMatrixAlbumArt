@@ -1,5 +1,5 @@
 # LED Matrix Album Art Display 
-EspHoMaTriXv2 with AppDaemon
+EspHoMaTriXv2 (for bitmap screens) with AppDaemon
 & Home Assistant 
 ## Introduction
 
@@ -107,7 +107,7 @@ imageprocessor:
   module: imageprocessor
   class: ImageProcessor
 ```
-**A new sensor named 8x8_pic will be create with attribute 'album_art' that contains the picture data**
+**A new sensor named *sensor.8x8_pic* will be create with attribute 'album_art' that contains the picture data**
 ```yaml
 {{ state_attr('sensor.8x8_pic','album_art') }}
 ```
